@@ -1,0 +1,44 @@
+# HKT SHOP - Hệ thống quản lý bán hàng
+
+## Cấu trúc thư mục
+p_HKT-main/
+├── app/
+│   ├── controllers/
+│   │   ├── AuthController.php       ✅ Đăng nhập/đăng ký/đăng xuất
+│   │   ├── HomeController.php       ✅ Dashboard thống kê
+│   │   ├── SanPhamController.php    ✅ Quản lý sản phẩm
+│   │   ├── HoaDonController.php     ✅ Tạo & quản lý hóa đơn
+│   │   ├── KhachHangController.php  ✅ Quản lý khách hàng
+│   │   ├── NhapKhoController.php    ✅ Phiếu nhập kho
+│   │   └── BaoCaoController.php     ✅ Báo cáo doanh thu
+│   └── views/
+│       ├── layouts/ (header, footer)
+│       ├── auth/    (login, register)
+│       ├── home/    (dashboard)
+│       ├── san_pham/(index, form, chi_tiet)
+│       ├── hoa_don/ (index, tao_moi, chi_tiet)
+│       ├── khach_hang/(index, form)
+│       ├── nhap_kho/(index, tao_moi)
+│       └── bao_cao/ (index)
+├── config/
+│   └── database.php
+├── public/
+│   ├── css/style.css
+│   └── js/app.js
+├── database.sql    ← Chạy file này trước!
+└── index.php
+
+## Cài đặt
+1. Copy thư mục vào htdocs (XAMPP) hoặc www (WAMP)
+2. Import file database.sql vào phpMyAdmin
+3. Truy cập: http://localhost/p_HKT-main/
+4. Đăng nhập: admin@hkt.com / password=123456
+
+## Tính năng
+- Dashboard thống kê doanh thu
+- Quản lý sản phẩm (CRUD + tồn kho)
+- Tạo hóa đơn bán hàng (in được)
+- Quản lý khách hàng thành viên
+- Phiếu nhập kho (tự cập nhật tồn kho)
+- Báo cáo doanh thu theo ngày (in được)
+- Phân quyền admin / nhân viên
