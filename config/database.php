@@ -1,18 +1,33 @@
 <?php
-$host = 'localhost';
-$dbname = 'ban_hang';
-$username = 'root';
-$password = '';
 
-try {
-    $pdo = new PDO(
-        "mysql:host=$host;dbname=$dbname;charset=utf8mb4",
-        $username,
-        $password
-    );
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-} catch (PDOException $e) {
-    die("Kết nối thất bại: " . $e->getMessage());
+class Database {
+    private static $instance = null;
+
+    public static function getConnection() {
+        if (self::$instance === null) {
+            $host    = 'localhost';
+            $dbname  = 'ban_hang';
+            $user    = 'root';
+            $pass    = '';
+            $charset = 'utf8mb4';
+            try {
+                self::$instance = new PDO(
+                    "mysql:host=$host;dbname=$dbname;charset=$charset",
+                    $user, $pass,
+                    [
+                        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+                        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+                        PDO::ATTR_EMULATE_PREPARES   => false,
+                    ]
+                );
+            } catch (PDOException $e) {
+                die('<div style="color:red;padding:20px;font-family:monospace">
+                    <b>Lỗi kết nối database:</b> ' . $e->getMessage() . '<br><br>
+                    Kiểm tra: tên database, user, password trong <code>config/database.php</code>
+                </div>');
+            }
+        }
+        return self::$instance;
+    }
 }
-?>
+>>>>>>> master

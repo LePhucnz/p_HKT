@@ -1,38 +1,108 @@
-<?php require_once 'app/views/layouts/header.php'; ?>
 
-<div class="row justify-content-center mt-5">
-    <div class="col-md-5">
-        <div class="card shadow">
-            <div class="card-header bg-success text-white text-center">
-                <h4><i class="bi bi-box-arrow-in-right"></i> Đăng nhập</h4>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng nhập — HKT Shop</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css" rel="stylesheet">
+    <style>
+        body { background: #f3f4f6; font-family: 'Segoe UI', sans-serif; }
+        .login-card {
+            width: 100%; max-width: 400px;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 4px 24px rgba(0,0,0,.08);
+            padding: 40px;
+        }
+        .login-logo {
+            width: 56px; height: 56px;
+            background: #1a56db;
+            border-radius: 14px;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 1.6rem; color: #fff;
+            margin: 0 auto 20px;
+        }
+        .form-control {
+            border-radius: 8px;
+            border-color: #d1d5db;
+            padding: 10px 14px;
+        }
+        .form-control:focus { border-color: #1a56db; box-shadow: 0 0 0 3px rgba(26,86,219,.12); }
+        .btn-login {
+            background: #1a56db; color: #fff;
+            border: none; border-radius: 8px;
+            padding: 11px; font-weight: 600;
+            width: 100%; font-size: .95rem;
+        }
+        .btn-login:hover { background: #1447b2; }
+    </style>
+</head>
+<body class="d-flex align-items-center justify-content-center" style="min-height:100vh">
+    <div class="login-card">
+        <div class="login-logo">
+            <i class="bi bi-shop"></i>
+        </div>
+        <h5 class="text-center fw-bold mb-1">HKT Shop</h5>
+        <p class="text-center text-muted mb-4" style="font-size:.85rem">Hệ thống quản lý bán hàng & thanh toán</p>
+
+        <?php if(isset($_SESSION['error'])): ?>
+            <div class="alert alert-danger d-flex align-items-center gap-2 py-2" style="font-size:.85rem">
+                <i class="bi bi-exclamation-triangle-fill"></i>
+                <?= htmlspecialchars($_SESSION['error']); unset($_SESSION['error']); ?>
             </div>
-            <div class="card-body">
-                <?php if ($error): ?>
-                    <div class="alert alert-danger"><?= $error ?></div>
-                <?php endif; ?>
+        <?php endif; ?>
 
-                <form method="POST">
-                    <div class="mb-3">
-                        <label class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control" 
-                               placeholder="Nhập email" required>
-                    </div>
-                    <div class="mb-3">
-                        <label class="form-label">Mật khẩu</label>
-                        <input type="password" name="mat_khau" class="form-control" 
-                               placeholder="Nhập mật khẩu" required>
-                    </div>
-                    <button type="submit" class="btn btn-success w-100">
-                        <i class="bi bi-box-arrow-in-right"></i> Đăng nhập
+        <form method="POST" action="<?= BASE_URL ?>auth/doLogin">
+            <div class="mb-3">
+                <label class="form-label fw-semibold" style="font-size:.85rem">Email</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0" style="border-radius:8px 0 0 8px">
+                        <i class="bi bi-envelope text-muted"></i>
+                    </span>
+                    <input type="email" name="email" class="form-control border-start-0"
+                           placeholder="email@example.com" required
+                           style="border-radius:0 8px 8px 0">
+                </div>
+            </div>
+            <div class="mb-4">
+                <label class="form-label fw-semibold" style="font-size:.85rem">Mật khẩu</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0" style="border-radius:8px 0 0 8px">
+                        <i class="bi bi-lock text-muted"></i>
+                    </span>
+                    <input type="password" name="mat_khau" id="pwdInput" class="form-control border-start-0"
+                           placeholder="••••••••" required
+                           style="border-radius:0 8px 8px 0">
+                    <button type="button" class="input-group-text bg-white border-start-0"
+                            style="border-radius:0 8px 8px 0; cursor:pointer"
+                            onclick="togglePwd()">
+                        <i class="bi bi-eye" id="pwdIcon"></i>
                     </button>
-                </form>
-                <p class="text-center mt-3">
-                    Chưa có tài khoản? 
-                    <a href="?page=auth&action=register">Đăng ký ngay</a>
-                </p>
+                </div>
             </div>
+            <button type="submit" class="btn-login">
+                <i class="bi bi-box-arrow-in-right me-2"></i>Đăng nhập
+            </button>
+        </form>
+
+        <div class="mt-4 p-3 rounded" style="background:#f9fafb;font-size:.78rem;color:#6b7280">
+            <div class="fw-semibold mb-1">Tài khoản mẫu:</div>
+            <div>Admin: <strong>admin@hkt.com</strong> / <strong>123456</strong></div>
+            <div>Thu ngân: <strong>thu_ngan@hkt.com</strong> / <strong>123456</strong></div>
         </div>
     </div>
-</div>
 
-<?php require_once 'app/views/layouts/footer.php'; ?>
+    <script>
+    function togglePwd() {
+        const i = document.getElementById('pwdInput');
+        const ic = document.getElementById('pwdIcon');
+        if (i.type === 'password') { i.type = 'text'; ic.className = 'bi bi-eye-slash'; }
+        else { i.type = 'password'; ic.className = 'bi bi-eye'; }
+    }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+>>>>>>> master
