@@ -23,7 +23,7 @@ class PromotionController {
 
     public function store() {
         $this->check();
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: ' . BASE_URL . 'promotions'); exit; }
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: ' . BASE_URL . 'promotion'); exit; }
         $loai   = $_POST['loai_km'] ?? '';
         $giatri = floatval($_POST['gia_tri'] ?? 0);
         if ($loai === 'percent' && $giatri > 100) {
@@ -41,7 +41,7 @@ class PromotionController {
         ];
         $model = new Promotion();
         $_SESSION[$model->create($data) ? 'success' : 'error'] = $model->create($data) ? 'Thêm khuyến mãi thành công!' : 'Thêm thất bại!';
-        header('Location: ' . BASE_URL . 'promotions'); exit;
+        header('Location: ' . BASE_URL . 'promotion'); exit;
     }
 
     public function toggleStatus($id) {
@@ -53,13 +53,13 @@ class PromotionController {
             $model->updateStatus($id, $newStatus);
             $_SESSION['success'] = $newStatus ? 'Đã kích hoạt' : 'Đã tắt';
         }
-        header('Location: ' . BASE_URL . 'promotions'); exit;
+        header('Location: ' . BASE_URL . 'promotion'); exit;
     }
 
     public function destroy($id) {
         $this->check();
         $model = new Promotion();
         $_SESSION[$model->delete($id) ? 'success' : 'error'] = $model->delete($id) ? 'Xóa thành công!' : 'Xóa thất bại!';
-        header('Location: ' . BASE_URL . 'promotions'); exit;
+        header('Location: ' . BASE_URL . 'promotion'); exit;
     }
 }

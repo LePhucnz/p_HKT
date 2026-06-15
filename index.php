@@ -1,5 +1,4 @@
 <?php
-
 // index.php - thư mục gốc p_HKT
 require_once 'config/database.php';
 require_once 'config/constants.php';
@@ -48,4 +47,3 @@ if (file_exists($controllerFile)) {
 } else {
     die("Không tìm thấy controller: $controllerName - File: $controllerFile");
 }
->>>>>>> master

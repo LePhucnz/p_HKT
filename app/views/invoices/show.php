@@ -5,7 +5,7 @@
     <h4>🧾 Hóa đơn #<?= htmlspecialchars($invoice['so_hd']) ?></h4>
     <div>
       <button onclick="window.print()" class="btn btn-outline-secondary">🖨️ In</button>
-      <a href="<?= BASE_URL ?>invoices/create" class="btn btn-primary">➕ Hóa đơn mới</a>
+      <a href="<?= BASE_URL ?>invoice/create" class="btn btn-primary">➕ Hóa đơn mới</a>
     </div>
   </div>
 

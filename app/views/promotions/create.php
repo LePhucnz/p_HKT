@@ -3,7 +3,7 @@
 <div class="row justify-content-center"><div class="col-md-6">
 <div class="table-card" style="padding:24px">
     <h5 class="fw-bold mb-4"><i class="bi bi-gift me-2 text-primary"></i>Thêm khuyến mãi</h5>
-    <form method="POST" action="<?= BASE_URL ?>promotions/store">
+    <form method="POST" action="<?= BASE_URL ?>promotion/store">
         <div class="mb-3">
             <label class="form-label fw-semibold">Tên chương trình *</label>
             <input type="text" name="ten_km" class="form-control" placeholder="VD: Giảm 10% dịp lễ" required>

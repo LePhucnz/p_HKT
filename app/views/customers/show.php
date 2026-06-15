@@ -2,7 +2,7 @@
 <?php require_once 'app/views/layouts/header.php'; ?>
 
 <div class="mb-3">
-    <a href="<?= BASE_URL ?>customer" class="btn btn-sm btn-outline-secondary">
+    <a href="<?= BASE_URL ?>customers" class="btn btn-sm btn-outline-secondary">
         <i class="bi bi-arrow-left me-1"></i>Quay lại
     </a>
     <a href="<?= BASE_URL ?>customer/edit/<?= $customer['id'] ?>" class="btn btn-sm btn-outline-warning ms-2">

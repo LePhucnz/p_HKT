@@ -27,7 +27,7 @@ class CategoryController {
 
     public function store() {
         $this->check();
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: ' . BASE_URL . 'categories'); exit; }
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: ' . BASE_URL . 'category'); exit; }
         $data = [
             'ten_danh_muc' => trim($_POST['ten_danh_muc'] ?? ''),
             'mo_ta'        => trim($_POST['mo_ta'] ?? ''),
@@ -38,7 +38,7 @@ class CategoryController {
         }
         $model = new Category();
         $_SESSION[$model->create($data) ? 'success' : 'error'] = $model->create($data) ? 'Thêm danh mục thành công!' : 'Thêm danh mục thất bại!';
-        header('Location: ' . BASE_URL . 'categories'); exit;
+        header('Location: ' . BASE_URL . 'category'); exit;
     }
 
     public function edit($id) {
@@ -51,7 +51,7 @@ class CategoryController {
 
     public function update($id) {
         $this->check();
-        if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: ' . BASE_URL . 'categories'); exit; }
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') { header('Location: ' . BASE_URL . 'category'); exit; }
         $model = new Category();
         $data = [
             'ten_danh_muc' => trim($_POST['ten_danh_muc'] ?? ''),
@@ -62,7 +62,7 @@ class CategoryController {
         } else {
             $_SESSION['error'] = 'Cập nhật thất bại!';
         }
-        header('Location: ' . BASE_URL . 'categories'); exit;
+        header('Location: ' . BASE_URL . 'category'); exit;
     }
 
     public function destroy($id) {
@@ -75,6 +75,6 @@ class CategoryController {
         } else {
             $_SESSION['error'] = 'Xóa thất bại!';
         }
-        header('Location: ' . BASE_URL . 'categories'); exit;
+        header('Location: ' . BASE_URL . 'category'); exit;
     }
 }

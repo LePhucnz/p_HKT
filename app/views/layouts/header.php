@@ -1,11 +1,8 @@
-<<<<<<< HEAD
-=======
 <?php
 require_once 'app/models/User.php';
 $current_url = $_GET['url'] ?? 'dashboard';
 $current_page = explode('/', $current_url)[0];
 ?>
->>>>>>> master
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -155,7 +152,7 @@ $current_page = explode('/', $current_url)[0];
     </a>
 
     <div class="sidebar-section">Bán hàng</div>
-    <a href="<?= BASE_URL ?>invoice/create" class="<?= $current_page==='invoices'?'active':'' ?>">
+    <a href="<?= BASE_URL ?>invoice/create" class="<?= $current_page==='invoice'?'active':'' ?>">
         <i class="bi bi-cart-plus"></i> Tạo hóa đơn
     </a>
     <a href="<?= BASE_URL ?>invoice" class="">
@@ -163,10 +160,10 @@ $current_page = explode('/', $current_url)[0];
     </a>
 
     <div class="sidebar-section">Kho hàng</div>
-    <a href="<?= BASE_URL ?>product" class="<?= $current_page==='products'?'active':'' ?>">
+    <a href="<?= BASE_URL ?>product" class="<?= $current_page==='product'?'active':'' ?>">
         <i class="bi bi-box-seam"></i> Sản phẩm
     </a>
-    <a href="<?= BASE_URL ?>category" class="<?= $current_page==='categories'?'active':'' ?>">
+    <a href="<?= BASE_URL ?>category" class="<?= $current_page==='category'?'active':'' ?>">
         <i class="bi bi-tags"></i> Danh mục
     </a>
     <a href="<?= BASE_URL ?>purchaseOrder" class="<?= $current_page==='purchaseOrder'?'active':'' ?>">
@@ -174,21 +171,34 @@ $current_page = explode('/', $current_url)[0];
     </a>
 
     <div class="sidebar-section">Khách hàng</div>
-    <a href="<?= BASE_URL ?>customer" class="<?= $current_page==='customers'?'active':'' ?>">
+    <a href="<?= BASE_URL ?>customer" class="<?= $current_page==='customer'?'active':'' ?>">
         <i class="bi bi-people"></i> Khách hàng
     </a>
 
     <?php if(User::hasRole([ROLE_ADMIN, ROLE_MANAGER])): ?>
     <div class="sidebar-section">Báo cáo</div>
-    <a href="<?= BASE_URL ?>report/revenue" class="<?= $current_page==='reports'?'active':'' ?>">
+    <a href="<?= BASE_URL ?>report/revenue" class="<?= $current_page==='report'?'active':'' ?>">
         <i class="bi bi-bar-chart-line"></i> Doanh thu
     </a>
-    <a href="<?= BASE_URL ?>promotion" class="<?= $current_page==='promotions'?'active':'' ?>">
+    <a href="<?= BASE_URL ?>promotion" class="<?= $current_page==='promotion'?'active':'' ?>">
         <i class="bi bi-gift"></i> Khuyến mãi
     </a>
     <?php endif; ?>
 
-    <hr class="sidebar-divider">
+        <div class="sidebar-section">Hệ thống</div>
+    <a href="<?= BASE_URL ?>user" class="<?= $current_page==='user'?'active':'' ?>">
+        <i class="bi bi-people-fill"></i> Người dùng
+    </a>
+
+    
+    <?php if(User::hasRole([ROLE_ADMIN])): ?>
+    <div class="sidebar-section">Hệ thống</div>
+    <a href="<?= BASE_URL ?>user" class="<?= $current_page==='user'?'active':'' ?>">
+        <i class="bi bi-people-fill"></i> Người dùng
+    </a>
+    <?php endif; ?>
+
+<hr class="sidebar-divider">
     <a href="<?= BASE_URL ?>auth/logout" class="text-danger mt-auto">
         <i class="bi bi-box-arrow-right"></i> Đăng xuất
     </a>
@@ -228,4 +238,3 @@ $current_page = explode('/', $current_url)[0];
             <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
         </div>
     <?php endif; ?>
->>>>>>> master

@@ -14,7 +14,7 @@
         </div>
         <div class="d-flex gap-2">
             <button type="submit" class="btn btn-primary px-4"><i class="bi bi-check-lg me-1"></i>Lưu</button>
-            <a href="<?= BASE_URL ?>category" class="btn btn-outline-secondary">Hủy</a>
+            <a href="<?= BASE_URL ?>categories" class="btn btn-outline-secondary">Hủy</a>
         </div>
     </form>
 </div>

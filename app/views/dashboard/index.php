@@ -90,7 +90,7 @@
         <div class="table-card h-100">
             <div class="card-header-custom">
                 <span><i class="bi bi-receipt me-2 text-primary"></i>Hóa đơn gần đây</span>
-                <a href="<?= BASE_URL ?>invoice" class="btn btn-sm btn-outline-primary py-0">Xem tất cả</a>
+                <a href="<?= BASE_URL ?>invoices" class="btn btn-sm btn-outline-primary py-0">Xem tất cả</a>
             </div>
             <div class="table-responsive">
                 <table class="table table-hover">
@@ -176,7 +176,7 @@
                 <div class="table-card">
                     <div class="card-header-custom">
                         <span><i class="bi bi-exclamation-triangle me-2 text-warning"></i>Sắp hết hàng</span>
-                        <a href="<?= BASE_URL ?>product" class="btn btn-sm btn-outline-warning py-0">Xem</a>
+                        <a href="<?= BASE_URL ?>products" class="btn btn-sm btn-outline-warning py-0">Xem</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-hover">
@@ -223,7 +223,7 @@
                 <i class="bi bi-truck me-1"></i>Nhập kho
             </a>
             <?php if(User::hasRole([ROLE_ADMIN, ROLE_MANAGER])): ?>
-            <a href="<?= BASE_URL ?>report/revenue" class="btn btn-outline-secondary">
+            <a href="<?= BASE_URL ?>reports/revenue" class="btn btn-outline-secondary">
                 <i class="bi bi-bar-chart-line me-1"></i>Báo cáo doanh thu
             </a>
             <?php endif; ?>

@@ -41,7 +41,7 @@
         </div>
         <div class="d-flex gap-2 mt-4">
           <button type="submit" class="btn btn-success">💾 Lưu</button>
-          <a href="<?= BASE_URL ?>customer" class="btn btn-outline-secondary">Hủy</a>
+          <a href="<?= BASE_URL ?>customers" class="btn btn-outline-secondary">Hủy</a>
         </div>
       </form>
     </div>

@@ -10,7 +10,7 @@
 
 <div class="table-card mb-3" style="padding:12px">
     <form method="GET" class="d-flex gap-2">
-        <input type="hidden" name="url" value="customers">
+        <input type="hidden" name="url" value="customer">
         <input type="text" name="search" class="form-control" placeholder="Tìm tên, SĐT, mã KH..." value="<?= htmlspecialchars($_GET['search'] ?? '') ?>">
         <select name="hang_thanh_vien" class="form-select" style="width:160px">
             <option value="">Tất cả hạng</option>
@@ -19,7 +19,7 @@
             <option value="Kim cương" <?= ($_GET['hang_thanh_vien']??'')==='Kim cương'?'selected':'' ?>>Kim cương</option>
         </select>
         <button class="btn btn-outline-primary px-3"><i class="bi bi-search"></i></button>
-        <a href="<?= BASE_URL ?>customer" class="btn btn-outline-secondary"><i class="bi bi-x"></i></a>
+        <a href="<?= BASE_URL ?>customers" class="btn btn-outline-secondary"><i class="bi bi-x"></i></a>
     </form>
 </div>
 
